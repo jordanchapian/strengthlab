@@ -1,27 +1,33 @@
 
 <ion-view view-title="Login" name="login-view" class="login">
 
-  <ion-content class="padding">
-  
-  	<div ng-if='!needsLogout'>
-      <div class="list list-inset">
-          <label class="item item-input">
-              <input type="text" placeholder="Username" ng-model="data.username">
-          </label>
-          <label class="item item-input">
-              <input type="password" placeholder="Password" ng-model="data.password">
-          </label>
-      </div>
-      <button class="button button-block button-calm" ng-click="login()">Login</button>
-    </div>
+  <div class='branding'>
+  	<div class='centerContainer'>
+  		<div class='centerContent'>
+			  <div class='logo'>
 
-		<div class='logoutFields' ng-if='needsLogout'>
-			<h1>You Are Logged In As {{activeName}}</h1>
-			<div class='actions'>
-				<div class='btn btn-default' ng-click='redirectUser()'>APPLICATION HOME</div>
-				<div class='btn btn-danger' ng-click='logout()'>LOGOUT</div>
+			  	<h1>StrengthLab</h1>
+			  </div>
+			  
+			  <p ng-if='loginMode'>
+				  Login to track your training or start a new training program. 
+			  </p>
+			  <p ng-if='!loginMode'>
+				  This is the text for the below method.
+			  </p>
+
 			</div>
-		</div>
-
-  </ion-content>
+	  </div>
+  </div>
+  <div class='action'>
+			<form ng-submit='loginClick(loginCred)' class='padding'>
+			    <label class="item item-input">
+			        <input type="text" placeholder="Username" ng-model="loginCred.username">
+			    </label>
+			    <label class="item item-input">
+			        <input type="password" placeholder="Password" ng-model="loginCred.password">
+			    </label>
+		    <button class="button button-block button-calm" type='submit'>Login</button>
+		  </form>
+  </div>
 </ion-view>

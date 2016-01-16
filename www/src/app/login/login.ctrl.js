@@ -10,23 +10,19 @@ angular.module('strengthlab.app.login')
     '$stateParams',
 
 function ($state, $scope, auth, AUTH_EVENTS, $timeout, userService, $stateParams) {
-    $scope.needsLogout = userService.isActive();
-    $scope.activeName = userService.getEmail();
     $scope.loginCred = {
         username:'',
         password:''
-    };
-    
+    };  
+    $scope.loginMode = true;
+
     $scope.loginClick = function (credentials) {
         auth.login(credentials)
         .then(function(){
             console.log('test');
         },
         function(e){
-            ngToast.create({
-               className: 'warning',
-               content: '<span>Credentials are invalid.</span>'
-            });
+           
         });
         
     };
@@ -39,10 +35,7 @@ function ($state, $scope, auth, AUTH_EVENTS, $timeout, userService, $stateParams
             window.location.reload(true);
         },
         function(){//some failure
-            ngToast.create({
-               className: 'warning',
-               content: '<span>Trouble Contacting Server. Try again.</span>'
-            });
+            
         });
         
     };
@@ -60,10 +53,7 @@ function ($state, $scope, auth, AUTH_EVENTS, $timeout, userService, $stateParams
     $scope.$on(AUTH_EVENTS.loginSuccess, $scope.redirectUser);
     if($stateParams.manual){
         $state.go('app.login', {manual:false}, {notify: false});
-        ngToast.create({
-           className: 'success',
-           content: '<strong>Logout Success</strong><p>Your data has been removed from memory.</p>'
-        });
+        
     }
     
     //should we inform the user that they have been logged out due to timeout?
