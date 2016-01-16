@@ -1,15 +1,16 @@
-angular.module('strengthlab.app.login')
-.controller('login.ctrl', 
+angular.module('strengthlab.app.auth')
+.controller('app.auth.ctrl', 
 [
     '$state', 
     '$scope', 
-    'strengthlab.app.login.auth.svc', 
+    'app.auth.svc', 
     'AUTH_EVENTS', 
     '$timeout',
     'userService',
     '$stateParams',
+    '$ionicPopup',
 
-function ($state, $scope, auth, AUTH_EVENTS, $timeout, userService, $stateParams) {
+function ($state, $scope, auth, AUTH_EVENTS, $timeout, userService, $stateParams, $ionicPopup) {
     $scope.loginCred = {
         username:'',
         password:''
@@ -19,10 +20,12 @@ function ($state, $scope, auth, AUTH_EVENTS, $timeout, userService, $stateParams
     $scope.loginClick = function (credentials) {
         auth.login(credentials)
         .then(function(){
-            console.log('test');
         },
         function(e){
-           
+            $ionicPopup.alert({
+                title: 'Login Failed',
+                template: 'The provided credentials did not authenticate you.'
+            });
         });
         
     };
@@ -51,18 +54,10 @@ function ($state, $scope, auth, AUTH_EVENTS, $timeout, userService, $stateParams
     };
 
     $scope.$on(AUTH_EVENTS.loginSuccess, $scope.redirectUser);
+
     if($stateParams.manual){
         $state.go('app.login', {manual:false}, {notify: false});
         
     }
-    
-    //should we inform the user that they have been logged out due to timeout?
-    // if($stateParams.timeout){
-    //     //we notified user... no need to notify again on refresh
-    //     $state.go('app.login', {timeout:false}, {notify: false});
-    //     $uibModal.open({
-    //         templateUrl: './www/src/usr/app/&.login/timeoutModal.tpl.html',
-    //         size: 'md',
-    //     });
-    // }
+
 }]);

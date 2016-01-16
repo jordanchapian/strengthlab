@@ -1,6 +1,6 @@
 angular.module('strengthlab.app', 
 [
-    'strengthlab.app.login',
+    'strengthlab.app.auth',
     'strengthlab.dataservice',
     'strengthlab.constant'
     // 'strengthlab.app.admin'
@@ -15,12 +15,12 @@ function($urlRouterProvider, $stateProvider){
 	
     $stateProvider
     .state('app', {
-        templateUrl:'./app/app.tpl.html',
+        templateUrl:'./&.app/app.tpl.html',
         abstract:true,
         resolve:{
             //ensure logged in.
             userInit:['$http','userService','$state',
-            function($http, userService, $state){
+            function($http, userService, $state){ 
                 if(loginRedirected)return false;
 
                 if(userService.isActive()){
@@ -34,9 +34,9 @@ function($urlRouterProvider, $stateProvider){
 
                                 var hashlocation = window.location.hash.split('?')[0];
 
-                                if(hashlocation === "#/login" || hashlocation === "#/signup") return;
+                                if(hashlocation === "#/auth") return;
 
-                                $state.go('app.login');
+                                $state.go('app.auth');
                             });
                 }
             }]

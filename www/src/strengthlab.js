@@ -26,7 +26,12 @@ angular.module('strengthlab',
     }
   });
 })
-
+.run(['$rootScope',
+function($rootScope){
+  $rootScope.$on('$stateChangeError', function (event, toState, toParams, fromState, fromParams, error) {
+    console.log(error)
+  });
+}])
 // .config(function($stateProvider, $urlRouterProvider) {
 
 //   // Ionic uses AngularUI Router which uses the concept of states

@@ -1,5 +1,5 @@
-angular.module('strengthlab.app.login')
-.factory('strengthlab.app.login.auth.svc', 
+angular.module('strengthlab.app.auth')
+.factory('app.auth.svc', 
 [
     '$http',
     '$q',
