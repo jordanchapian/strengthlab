@@ -1,7 +1,9 @@
 {
   "name": "HelloIonic",
   "private": "true",
-  "devDependencies": {
-    "ionic": "driftyco/ionic-bower#1.2.4"
+  "devDependencies": {},
+  "dependencies": {
+    "ionic": "driftyco/ionic-bower#1.2.4",
+    "jquery": "~2.2.0"
   }
 }
