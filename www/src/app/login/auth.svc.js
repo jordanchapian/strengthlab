@@ -5,9 +5,10 @@ angular.module('strengthlab.app.login')
     '$q',
     '$rootScope',
     'AUTH_EVENTS',
+    'ENDPOINT',
     'userService',
 
-function ($http, $q, $rootScope, AUTH_EVENTS, userService) {
+function ($http, $q, $rootScope, AUTH_EVENTS, ENDPOINT, userService) {
     var authService = {};
     //attempt to get user credentials
 
@@ -15,7 +16,7 @@ function ($http, $q, $rootScope, AUTH_EVENTS, userService) {
         var defer = $q.defer();
 
         $http
-            .post('/api/auth/login', credentials)
+            .post('http://' + ENDPOINT.appServer + '/api/auth/login', credentials)
             .then(function (res) {
 
                 //init the user service
@@ -36,7 +37,7 @@ function ($http, $q, $rootScope, AUTH_EVENTS, userService) {
     authService.logout = function(){
         var defer = $q.defer();
 
-        $http.post('/api/auth/logout')
+        $http.post('http://' + ENDPOINT.appServer + '/api/auth/logout')
             .then(function(){//success
                 //destroy the user service
                 userService.reset();
