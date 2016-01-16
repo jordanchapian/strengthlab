@@ -1,0 +1,27 @@
+
+<ion-view view-title="Login" name="login-view" class="login">
+
+  <ion-content class="padding">
+  
+  	<div ng-if='!needsLogout'>
+      <div class="list list-inset">
+          <label class="item item-input">
+              <input type="text" placeholder="Username" ng-model="data.username">
+          </label>
+          <label class="item item-input">
+              <input type="password" placeholder="Password" ng-model="data.password">
+          </label>
+      </div>
+      <button class="button button-block button-calm" ng-click="login()">Login</button>
+    </div>
+
+		<div class='logoutFields' ng-if='needsLogout'>
+			<h1>You Are Logged In As {{activeName}}</h1>
+			<div class='actions'>
+				<div class='btn btn-default' ng-click='redirectUser()'>APPLICATION HOME</div>
+				<div class='btn btn-danger' ng-click='logout()'>LOGOUT</div>
+			</div>
+		</div>
+
+  </ion-content>
+</ion-view>

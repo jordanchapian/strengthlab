@@ -31,7 +31,7 @@ module.exports = function(grunt) {
         externalModules:['ui.router','ngAnimate', 'ionic']
       },
       app: {
-        src:  ['www/js/**/*.js','./www/build/template.js'],
+        src:  ['www/src/**/*.js','./www/build/template.js'],
         dest: 'www/build/app.js'
       }
     },
@@ -64,6 +64,7 @@ module.exports = function(grunt) {
           files: ['./www/src/**/*.js'],
           tasks: ['clean', 'angular-builder'],
           options: {
+            livereload: false,
             spawn: false,
           },
         },
@@ -72,7 +73,7 @@ module.exports = function(grunt) {
           files: ['./sass/**/*.sass'],
           tasks: ['sass', 'postcss'],
           options: {
-            livereload: true,
+            livereload: false,
             spawn: false,
           }
     },
@@ -81,6 +82,7 @@ module.exports = function(grunt) {
         files: ['./www/src/**/*.tpl.html'],
         tasks: ['ngtemplates','angular-builder'],
         options:{
+          livereload: false,
           spawn:false
         }
     }
