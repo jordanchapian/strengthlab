@@ -8,9 +8,16 @@ function($stateProvider){
 		$stateProvider
 		.state('app.admin.landing',
 		{
+
 			url:'/landing',
-			templateUrl:'./&.app/&.admin/&.landing/landing.tpl.html',
+			
 			// abstract:true
+			views: {
+        'tab-landing': {
+          templateUrl:'./&.app/&.admin/&.landing/landing.tpl.html',
+          // controller: 'HomeTabCtrl'
+        }
+      }
 		});
 		
 }]);

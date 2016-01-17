@@ -9,8 +9,14 @@ function($stateProvider){
 		.state('app.admin.start',
 		{
 			url:'/start',
-			templateUrl:'./&.app/&.admin/&.start/start.tpl.html',
+			
 			// abstract:true
+			views: {
+        'tab-start': {
+          templateUrl:'./&.app/&.admin/&.start/start.tpl.html',
+          // controller: 'HomeTabCtrl'
+        }
+      }
 		});
 		
 }]);

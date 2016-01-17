@@ -8,9 +8,15 @@ function($stateProvider){
 		$stateProvider
 		.state('app.admin.routine',
 		{
+
 			url:'/routine',
-			templateUrl:'./&.app/&.admin/&.routine/routine.tpl.html',
 			// abstract:true
+			views: {
+        'tab-routine': {
+          templateUrl:'./&.app/&.admin/&.routine/routine.tpl.html',
+          // controller: 'HomeTabCtrl'
+        }
+      }
 		});
 		
 }]);
