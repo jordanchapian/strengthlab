@@ -34,6 +34,28 @@ function ($http, $q, $rootScope, AUTH_EVENTS, ENDPOINT, userService) {
         return defer.promise;
     };
 
+    authService.signup = function (credentials) {
+        var defer = $q.defer();
+
+        $http
+            .post('http://' + ENDPOINT.appServer + '/api/auth/signup', credentials)
+            .then(function (res) {
+
+                //init the user service
+                userService.init()
+                .then(function(){
+                    $rootScope.$broadcast(AUTH_EVENTS.signupSuccess);
+                    defer.resolve(res);
+                }, 
+                function(){
+                    defer.reject();
+                });
+
+            }, function(){ defer.reject(); });
+
+        return defer.promise;
+    };
+
     authService.logout = function(){
         var defer = $q.defer();
 

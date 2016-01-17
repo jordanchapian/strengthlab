@@ -12,7 +12,7 @@ var express = require('express'),
 mongoose.Promise = global.Promise;
 
 //connect to mongodb
-mongoose.connect('mongodb://127.0.0.1:27017/mdr');
+mongoose.connect('mongodb://127.0.0.1:27017/strengthlab');
 
 // Configure authentication routes and services
 require('./config/passport.js');
