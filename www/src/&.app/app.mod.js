@@ -2,8 +2,8 @@ angular.module('strengthlab.app',
 [
     'strengthlab.app.auth',
     'strengthlab.dataservice',
-    'strengthlab.constant'
-    // 'strengthlab.app.admin'
+    'strengthlab.constant',
+    'strengthlab.app.admin'
 ])
 .config(['$urlRouterProvider', '$stateProvider', 
 function($urlRouterProvider, $stateProvider){
@@ -34,7 +34,7 @@ function($urlRouterProvider, $stateProvider){
 
                                 var hashlocation = window.location.hash.split('?')[0];
 
-                                if(hashlocation === "#/auth") return;
+                                if(hashlocation === "#/auth/signup" || hashlocation === "#/auth/login") return;
 
                                 $state.go('app.auth');
                             });

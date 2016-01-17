@@ -32,7 +32,7 @@ function ($state, $scope, auth, AUTH_EVENTS, $timeout, userService, $stateParams
     };
 
     $scope.$on(AUTH_EVENTS.loginSuccess, function(){
-
+        $state.go('app.admin.landing');
     });
 
 }]);
