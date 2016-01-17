@@ -9,7 +9,7 @@ angular.module('strengthlab.app',
 function($urlRouterProvider, $stateProvider){
 
 	//set your default route logic... (Could be based on login sessions, user modes, ... etc)
-	$urlRouterProvider.otherwise('/login');
+	$urlRouterProvider.otherwise('/auth/login');
 
 	var loginRedirected = false;
 	

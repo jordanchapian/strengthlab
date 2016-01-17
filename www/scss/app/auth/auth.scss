@@ -1,0 +1,95 @@
+.auth{
+	.branding{
+		position: absolute;
+		left: 0px;
+		top:0px;
+
+		width: 100%;
+		height: calc(100% - (100% / 1.618));
+
+		background: $blue0;
+		border-bottom: $blue0_1 solid 2px;
+		
+		.location{
+			position:absolute;
+			left: 0px;
+			bottom:0px;
+
+			width: 100%;
+			height: 40px;
+
+			display: table;
+
+			.cell{
+				display: table-cell;
+				line-height: 40px;
+				text-align: center;
+				position:relative;
+				color:white;
+				font-size: 16px;
+			}
+
+			.cell.active:after, .cell.active:before {
+				bottom: 100%;
+				left: 50%;
+				border: solid transparent;
+				content: " ";
+				height: 0;
+				width: 0;
+
+				position: absolute;
+				bottom:-2px;
+				pointer-events: none;
+			}
+
+			.cell.active:after {
+				border-color: rgba(136, 183, 213, 0);
+				border-bottom-color: $white;
+				border-width: 8px;
+				margin-left: -8px;
+			}
+			.cell.active:before {
+				border-color: rgba(0, 0, 0, 0);
+				border-bottom-color: $blue0_1;
+				border-width: 10px;
+				margin-left: -10px;
+			}
+
+		}
+
+		.centerContainer{
+			display: table;
+			width: 100%;
+			height: 100%;
+
+
+			.centerContent{
+				display: table-cell;
+				vertical-align: middle;
+				text-align: center;
+			}
+		}
+
+		.logo{
+			margin-bottom:5px;
+
+			h1{
+				color: white;
+				font-weight: 500;
+				font-size:25px;
+				margin: 0px;
+			}
+		}
+	}
+
+	.action{
+		position: absolute;
+		left: 0px;
+		bottom:0px;
+
+		width: 100%;
+		height: calc(100% / 1.618);
+
+		background: $white;
+	}
+}

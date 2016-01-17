@@ -6,14 +6,20 @@ function($stateProvider){
 		.state('app.auth',
 		{
 			url:'/auth',
-			controller:'app.auth.ctrl',
 			templateUrl:'./&.app/&.auth/auth.tpl.html',
-			resolve:{
-				
-			},
-			data:{
-
-			}
+			abstract:true
+		})
+		.state('app.auth.login',
+		{
+			url:'/login',
+			controller:'app.auth.login.ctrl',
+			templateUrl:'./&.app/&.auth/&.login/login.tpl.html'
+		})
+		.state('app.auth.signup',
+		{
+			url:'/signup',
+			controller:'app.auth.signup.ctrl',
+			templateUrl:'./&.app/&.auth/&.signup/signup.tpl.html'
 		});
 		
 }]);

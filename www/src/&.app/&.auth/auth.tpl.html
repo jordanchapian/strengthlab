@@ -1,33 +1,28 @@
 
-<ion-view view-title="Login" name="login-view" class="login">
+<div class="auth">
 
   <div class='branding'>
+
   	<div class='centerContainer'>
   		<div class='centerContent'>
 			  <div class='logo'>
-
 			  	<h1>StrengthLab</h1>
 			  </div>
-			  
-			  <p ng-if='loginMode'>
-				  Login to track your training or start a new training program. 
-			  </p>
-			  <p ng-if='!loginMode'>
-				  This is the text for the below method.
-			  </p>
 
 			</div>
 	  </div>
+
+	  <div class='location'>
+		  <div class='cell' ui-sref='app.auth.signup' ui-sref-active='active'>
+			  Sign Up
+		  </div>
+		  <div class='cell' ui-sref='app.auth.login' ui-sref-active='active'>
+			  Log In
+		  </div>
+	  </div>
+
   </div>
-  <div class='action'>
-			<form ng-submit='loginClick(loginCred)' class='padding'>
-			    <label class="item item-input">
-			        <input type="text" placeholder="Username" ng-model="loginCred.username">
-			    </label>
-			    <label class="item item-input">
-			        <input type="password" placeholder="Password" ng-model="loginCred.password">
-			    </label>
-		    <button class="button button-block button-calm" type='submit'>Login</button>
-		  </form>
+  <div class='action' ui-view>
+			
   </div>
-</ion-view>
+</div>
