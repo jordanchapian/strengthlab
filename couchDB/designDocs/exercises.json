@@ -1,0 +1,6 @@
+{
+   "language": "javascript",
+   "filters": {
+     "by_agent": "function(doc, req) { return doc.agent === req.query.agent; }"
+   }
+}

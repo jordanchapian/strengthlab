@@ -1,0 +1,21 @@
+<ion-modal-view>
+  <ion-header-bar class='bar-positive'>
+  	<button class="button" ng-click='closeNewRoutineModal()'>Cancel</button>
+    <h1 class="title">Create New Routine</h1>
+  </ion-header-bar>
+  <ion-content class='padding'>
+    <div class="list">
+      <label class="item item-input">
+        <input required type="text" placeholder="Routine Name" ng-model='newRoutineInput.title'>
+      </label>
+      <label class="item item-input">
+        <textarea placeholder="Routine Description" ng-model='newRoutineInput.description'></textarea>
+      </label>
+    </div>
+
+    <button class="button button-block button-positive" ng-click='saveNewRoutine()'>
+      Create
+    </button>
+
+  </ion-content>
+</ion-modal-view>

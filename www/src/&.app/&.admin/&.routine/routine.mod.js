@@ -14,7 +14,7 @@ function($stateProvider){
 			views: {
         'tab-routine': {
           templateUrl:'./&.app/&.admin/&.routine/routine.tpl.html',
-          // controller: 'HomeTabCtrl'
+          controller: 'app.admin.routine.ctrl'
         }
       }
 		});
