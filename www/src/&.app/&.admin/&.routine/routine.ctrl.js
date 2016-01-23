@@ -6,7 +6,8 @@ angular.module('strengthlab.app.admin.routine')
     '$ionicPopup',
     '$ionicModal',
     'dataservice.routineCollection.svc',
-function ($state, $scope, $ionicPopup, $ionicModal,routineCollection) {
+    'dataservice.exerciseCollection.svc',//tmp
+function ($state, $scope, $ionicPopup, $ionicModal,routineCollection,exerciseCollection) {
     
     $ionicModal.fromTemplateUrl('./&.app/&.admin/&.routine/newRoutine.tpl.html', {
         scope: $scope,

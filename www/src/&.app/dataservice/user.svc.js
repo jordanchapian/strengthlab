@@ -1,8 +1,8 @@
 angular.module('strengthlab.dataservice')
 .service('userService',[
 
-'$state', '$timeout','$http','$q',
-function($state, $timeout, $http, $q){
+'$state', '$timeout','$http','$q','ENDPOINT',
+function($state, $timeout, $http, $q,ENDPOINT){
 	var self = this,
 		isInit = false,
 		userDatum;
@@ -20,7 +20,7 @@ function($state, $timeout, $http, $q){
 	this.init = function(user){
 		var defer = $q.defer();
 
-		// $http.get('/api/user?me=true')
+		// $http.get('http://' + ENDPOINT.appServer + '/api/user?me=true', { withCredentials:true })
 		// .success(function(user){
 		// 	//set initial state
 		// 	userDatum = user;
@@ -31,7 +31,14 @@ function($state, $timeout, $http, $q){
 		// 	defer.reject();
 		// });
 	
+		userDatum = {
+			_id:'23233124214dasda21e2',
+			email:'jchapian@utk.edu'
+		};
+		isInit = true;
+
 		defer.resolve();
+		
 		return defer.promise;
 	};
 

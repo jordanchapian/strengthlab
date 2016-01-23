@@ -36,9 +36,20 @@ function($urlRouterProvider, $stateProvider){
 
                                 if(hashlocation === "#/auth/signup" || hashlocation === "#/auth/login") return;
 
-                                $state.go('app.auth');
+                                $state.go('app.auth.login');
                             });
                 }
+            }],
+            dataBindingInit:[
+                '$q',
+                'dataservice.exerciseCollection.svc',
+            function($q){
+                var promises = [];
+                for(var i = 1; i < arguments.length; i++){
+                    promises.push(arguments[i].init());
+                }
+
+                return $q.all(promises);
             }]
         }
     });
