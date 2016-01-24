@@ -12,27 +12,35 @@ angular.module('strengthlab.app.auth')
 
 function ($state, $scope, auth, AUTH_EVENTS, $timeout, userService, $stateParams, $ionicPopup) {
     $scope.loginCred = {
-        username:'',
+        email:'',
         password:''
     };  
     
     $scope.loginMode = true;
 
     $scope.loginClick = function (credentials) {
+
         auth.login(credentials)
         .then(function(){
+            userService.init()
+            .then(function(){
+                $state.go('app.admin.landing');
+            },
+            function(){
+                $ionicPopup.alert({
+                    title: 'Uh Oh',
+                    template: 'We are having problems. Please try again later.'
+                });
+            });
         },
         function(e){
+            console.log(e);
             $ionicPopup.alert({
                 title: 'Login Failed',
-                template: 'The provided credentials did not authenticate you.'
+                template: e
             });
         });
         
     };
-
-    $scope.$on(AUTH_EVENTS.loginSuccess, function(){
-        $state.go('app.admin.landing');
-    });
 
 }]);

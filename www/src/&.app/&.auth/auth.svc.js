@@ -7,8 +7,9 @@ angular.module('strengthlab.app.auth')
     'AUTH_EVENTS',
     'ENDPOINT',
     'userService',
+    'apiJwt',
 
-function ($http, $q, $rootScope, AUTH_EVENTS, ENDPOINT, userService) {
+function ($http, $q, $rootScope, AUTH_EVENTS, ENDPOINT, userService, apiJwt) {
     var authService = {};
     //attempt to get user credentials
 
@@ -19,17 +20,10 @@ function ($http, $q, $rootScope, AUTH_EVENTS, ENDPOINT, userService) {
             .post('http://' + ENDPOINT.appServer + '/api/auth/login', credentials)
             .then(function (res) {
 
-                //init the user service
-                userService.init()
-                .then(function(){
-                    $rootScope.$broadcast(AUTH_EVENTS.loginSuccess);
-                    defer.resolve(res);
-                }, 
-                function(){
-                    defer.reject();
-                });
+                apiJwt.set(res.data);
+                defer.resolve();
 
-            }, function(){ defer.reject(); });
+            }, function(e){ defer.reject(e.data); });
 
         return defer.promise;
     };
@@ -44,11 +38,11 @@ function ($http, $q, $rootScope, AUTH_EVENTS, ENDPOINT, userService) {
                 //init the user service
                 userService.init()
                 .then(function(){
-                    $rootScope.$broadcast(AUTH_EVENTS.signupSuccess);
-                    defer.resolve(res);
+                    apiJwt.set(e.data);
+                    defer.resolve();
                 }, 
-                function(){
-                    defer.reject();
+                function(e){
+                    defer.reject(e);
                 });
 
             }, function(){ defer.reject(); });
@@ -63,10 +57,6 @@ function ($http, $q, $rootScope, AUTH_EVENTS, ENDPOINT, userService) {
             .then(function(){//success
                 //destroy the user service
                 userService.reset();
-
-                //$broadcast logout event
-                $rootScope.$broadcast(AUTH_EVENTS.logoutSuccess);
-
                 defer.resolve();
             },
             function(){//fail
